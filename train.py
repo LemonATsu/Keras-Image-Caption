@@ -31,7 +31,7 @@ def gen_batch_in_thread(img_map, df_cap, vocab_size, n_jobs=4,
     return np.array(imgs), np.array(curs).reshape((-1,1)), np.array(nxts), \
             np.array(seqs), np.array(vhists)
 
-def generate_batch(img_map, df_cap, vocab_size, size=32):
+def generate_batch(img_map, df_cap, vocab_size, size=32, max_caplen=53):
     imgs, curs, nxts, seqs, vhists = [], [], [], [], []
 
     for idx in np.random.randint(df_cap.shape[0], size=size):
