@@ -13,7 +13,7 @@ from beamsearch import beamsearch as bs
 from beamsearch import unroll
 
 def generate_k_best(model, enc_map, dec_map, img, k=4, max_len=10):
-    ans = bs(model, enc_map, dec_map, tag_map, img, k, max_len)
+    ans = bs(model, enc_map, dec_map, img, k, max_len)
     gen = []
     for x in ans:
         if x == 1 : break
@@ -43,5 +43,5 @@ if __name__ == '__main__':
     model = image_caption_model(clipnorm=1.)
     model.load_weights(path)
 
-    eval_human(model, img_train, df_cap, enc_map, dec_map, with_seq=True, with_vhist=True, k=1, size=40, max_len=13)
+    eval_human(model, img_train, df_cap, enc_map, dec_map, k=1, size=40, max_len=13)
 
